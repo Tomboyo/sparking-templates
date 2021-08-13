@@ -1,0 +1,19 @@
+= SparkleJ: Native Java 11 OpenAPI Generator Module
+
+This is a Java 11 native client generator for [OpenAPI Generator (OAG)](https://github.com/OpenAPITools/openapi-generator). It has the following goals:
+
+. When an OpenAPI Specification I consume to generate a client contains errors or omissions, I can easily work around those errors in my application so that I am not blocked while waiting for OAS corrections to be released, and do not have to maintain a modified copy of the OAS.
+
+. I can migrate to the next backwards-compatible OAS released by the service maintainers without breaking my application code (even if I have work-arounds in my application) so that I can consume OAS updates as fast as I need them, but also schedule code-cleanup at my own pace.
+
+. I can easily navigate null data in the API model so that I have an easier time writing my code correctly.
+
+. I can create requests (including request body models) with a developer-friendly API so that I have an easy time exploring and learning the service API.
+
+. I can make any request synchronously or asynchronously so that I can use my resources wisely.
+
+. I can consume OAS v2 and v3 specs so that services can migrate at their own pace, and so that I can consume from a broad range of services.
+
+. I can use Jackson for data serialization because it is commonly-used.
+
+Note that the OAG supports multiple serializers, native generation, async, and optional getters already. However, the templates do not allow the application developer to modify or define new operations on-the-fly, which is necessary to support concurrent work on the client-side while the OAS maintainers release a fix, especially in environments where that takes longer than a few hours.

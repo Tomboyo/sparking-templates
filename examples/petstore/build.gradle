@@ -1,0 +1,39 @@
+buildscript {
+    dependencies {
+        classpath "org.openapitools:openapi-generator-gradle-plugin:5.0.0"
+        // The buildscript dependencies have to be evaluated before the build. Therefore we cannot make this example
+        // project part of the multi-module build, since the JAR is compiled strictly after this dependency is
+        // configured.
+        classpath files('../../sparklej-openapi-generator/build/libs/sparklej-openapi-generator-0.1.0.jar')
+    }
+}
+
+plugins {
+    id 'java'
+    id "org.openapi.generator" version "5.2.0"
+}
+
+group 'com.github.tomboyo.sparklej'
+version '0.1.0'
+description "Example using the Petstore OAS"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('../../sparklej-client-support/build/libs/sparklej-client-support.0.1.0.jar')
+}
+
+openApiGenerate {
+    generatorName = 'sparklej'
+    inputSpec = "$projectDir/petstore.yaml".toString()
+}
+
+compileJava {
+    dependsOn tasks.openApiGenerate
+}
+
+test {
+    useJUnitPlatform()
+}

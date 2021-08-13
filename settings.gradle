@@ -1,0 +1,3 @@
+rootProject.name = 'sparklej'
+include 'sparklej-openapi-generator'
+include 'sparklej-client-support'

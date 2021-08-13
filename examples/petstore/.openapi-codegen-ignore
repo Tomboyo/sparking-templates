@@ -1,0 +1,8 @@
+# Generate nothing unless exclusions are defined
+**
+
+# Allow all model and api source files, but not tests.
+!**/src/main/java/**
+
+# Allow the generated pom.xml for future reference. This specifies necessary dependency version numbers, for instance.
+!**/pom.xml
